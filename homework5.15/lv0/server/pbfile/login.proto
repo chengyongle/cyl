@@ -1,0 +1,17 @@
+syntax = "proto3";  //语法声明
+package grpcinclass; //包名
+option go_package = "/proto";
+
+// protoc --go_out=plugins=grpc:.  ./login.proto
+
+message LoginResp{
+  bool OK = 1;
+}
+message LoginReq{
+  string UserName = 1;
+  string PassWord = 2;
+}
+//Bili微服务，定义一个RPC服务并具有一个方法，该方法接收LoginReq，并返回一个LoginResp，此时可以在.proto文件中进行如下定义：
+service Denglu{
+  rpc Login(LoginReq) returns (LoginResp){}
+}
