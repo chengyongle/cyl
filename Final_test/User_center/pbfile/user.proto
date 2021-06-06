@@ -1,0 +1,25 @@
+syntax = "proto3";  //语法声明
+package pbfile; //包名
+option go_package = "/proto";
+
+
+message LoginResp{
+  int32  RES = 1;
+}
+message LoginReq{
+  string UserName = 1;
+  string PassWord = 2;
+}
+message RegisterResp{
+  int32  RES = 1;
+}
+message RegisterReq{
+  string UserName = 1;
+  string PassWord = 2;
+}
+
+
+service Userserver{
+  rpc Login(LoginReq) returns (LoginResp){}
+  rpc Register(RegisterReq) returns (RegisterResp){}
+}
